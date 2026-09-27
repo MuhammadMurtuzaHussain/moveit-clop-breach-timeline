@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MOVEit / Cl0p Breach Timeline — a technical case study</title>
+<meta name="description" content="A sourced, technical timeline of the 2023 MOVEit Transfer / Cl0p mass-exploitation campaign: staging, zero-day, disclosure, cascading breaches, attribution and long-tail impact, with a MITRE ATT&CK mapping and full bibliography." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%237a2e1d'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark"></span>
+    <span class="brand-name">Breach Timeline</span>
+    <span class="brand-sub">MOVEit &middot; Cl0p &middot; 2020&ndash;2024</span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <button id="theme-toggle" class="icon-btn" type="button" aria-label="Toggle light and dark theme">Light / Dark</button>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <span class="kicker">Technical case study &middot; sourced</span>
+    <h1>The MOVEit Transfer / Cl0p mass-exploitation campaign</h1>
+    <p class="dek">
+      One unauthenticated SQL-injection zero-day in a single managed file-transfer product,
+      exploited over a long weekend, ended up touching more than 2,700 organisations and
+      roughly 96 million people &mdash; including employees in Ireland &mdash; without a single
+      file being encrypted. This is the technical timeline, from the group's earlier dry runs
+      to the final tally, with every claim linked to its source.
+    </p>
+    <div class="hero-meta">
+      <span><strong id="stat-events">&ndash;</strong> timeline events</span>
+      <span><strong id="stat-sources">&ndash;</strong> cited sources</span>
+      <span><strong id="stat-span">&ndash;</strong></span>
+      <span>Threat actor: <strong>Cl0p / FIN11 (formerly tracked as UNC4857)</strong></span>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Timeline</h2>
+      <p class="section-note">Filter by phase. Numbers in brackets link to the bibliography at the bottom of the page.</p>
+    </div>
+    <div class="legend" id="legend"></div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Why this one is worth studying</h2>
+    </div>
+    <div class="callout">
+      <h3>Reading the case study for CTI, not just for news</h3>
+      <ul>
+        <li><strong>The pattern predates the incident.</strong> Accellion FTA (2020) &rarr; GoAnywhere MFT (Jan 2023) &rarr; MOVEit Transfer (May 2023) is the same actor running the same play against the same class of product: internet-facing, enterprise file-transfer software sitting at the edge of the network, trusted enough to hold sensitive data and exposed enough to be found by mass scanning.</li>
+        <li><strong>No ransomware payload was needed.</strong> Cl0p shifted to exfiltration-only extortion: steal the data, threaten publication, skip the noisy and increasingly detectable step of encrypting everything. That changes what "containment" and "recovery" mean for defenders and for incident response plans built around ransomware playbooks.</li>
+        <li><strong>Impact compounds through the supply chain.</strong> A single zero-day reached Aer Lingus through its payroll processor Zellis, and reached Ireland's HSE two hops further through EY's recruitment tooling &mdash; neither of those organisations ran MOVEit themselves.</li>
+        <li><strong>Disclosure is not the end of the story.</strong> Two further SQL-injection flaws (CVE-2023-35036, CVE-2023-35708) surfaced in the weeks after the first patch, and the confirmed-victim count kept climbing for more than a year after exploitation stopped.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>MITRE ATT&amp;CK mapping</h2>
+      <p class="section-note">How the intrusion maps onto ATT&CK for Enterprise, for anyone building detections or a training scenario from this case.</p>
+    </div>
+    <table class="mitre">
+      <thead><tr><th>Tactic</th><th>Technique</th><th>Evidence in this campaign</th><th>Src</th></tr></thead>
+      <tbody id="mitre-body"></tbody>
+    </table>
+  </section>
+
+  <section class="section" style="border-bottom: none;">
+    <div class="section-head">
+      <h2>Sources</h2>
+      <p class="section-note">Primary advisories and threat-intel reporting first, aggregators cross-checked against them. Full annotated list also in <a href="docs/sources.md">docs/sources.md</a>.</p>
+    </div>
+    <ol class="sources" id="sources"></ol>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p>Independent research write-up for portfolio and study purposes &mdash; not affiliated with Progress Software, Cl0p, CISA, Mandiant or any organisation named above. Built from the public sources cited. See <a href="docs/timeline.md">docs/timeline.md</a> and <a href="docs/mitre-attck-mapping.md">docs/mitre-attck-mapping.md</a> for plain-text mirrors, and <a href="README.md">README.md</a> for how the data is validated.</p>
+</footer>
+
+<script src="assets/js/timeline-data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

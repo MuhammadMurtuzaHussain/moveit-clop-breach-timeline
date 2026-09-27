@@ -1,0 +1,14 @@
+{
+  "name": "moveit-clop-breach-timeline",
+  "version": "1.0.0",
+  "description": "A sourced, technical timeline of the 2023 MOVEit Transfer / Cl0p mass-exploitation campaign, with a MITRE ATT&CK mapping and full bibliography.",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-timeline.js",
+    "docs": "node scripts/build-docs.js",
+    "serve": "npx --yes serve . -l 8080",
+    "test": "npm run validate"
+  },
+  "keywords": ["cyber-threat-intelligence", "moveit", "cl0p", "data-breach", "mitre-attck", "incident-timeline", "cybersecurity"],
+  "license": "MIT"
+}
